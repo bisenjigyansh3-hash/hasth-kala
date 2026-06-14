@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HasthKala — Handcrafted with Heart</title>
+  <meta name="description" content="Handmade bookmarks, paintings and handicrafts created by differently-abled artisans. Every purchase supports independence and dignity through craft." />
+
+  <!-- ============================================================
+       GOOGLE ANALYTICS (GA4) — replace G-XXXXXXXXXX with your ID
+       ============================================================ -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper:   '#F6F1E6',
+            ink:     '#221F1B',
+            olive:   '#586B43',
+            ochre:   '#C5832A',
+            rust:    '#A1462E',
+            line:    '#D9CFBF'
+          },
+          fontFamily: {
+            display: ['"Fraunces"', 'serif'],
+            body: ['"Inter"', 'sans-serif'],
+            mono: ['"Space Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Subtle paper-grain texture for a tactile, handmade feel */
+    body {
+      background-color: #F6F1E6;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* Hand-stamped seal badge */
+    .seal {
+      border: 1.5px dashed currentColor;
+      border-radius: 9999px;
+      transform: rotate(-9deg);
+    }
+
+    /* Stitch-style divider, evoking hand-sewn seams */
+    .stitch {
+      border-top: 1px dashed #C9BBA3;
+    }
+
+    /* Loading spinner */
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #E4DBC9;
+      border-top-color: #A1462E;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Smooth fade-in for product cards */
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* Custom focus ring for accessibility */
+    .focus-ring:focus-visible {
+      outline: 2px solid #A1462E;
+      outline-offset: 2px;
+    }
+
+    /* Active filter pill */
+    .pill-active {
+      background-color: #221F1B !important;
+      color: #F6F1E6 !important;
+      border-color: #221F1B !important;
+    }
+
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+
+<body class="font-body text-ink antialiased">
+
+  <!-- ================= HEADER ================= -->
+  <header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-sm border-b border-line">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="#top" class="font-display text-2xl tracking-tight">Hasth<span class="text-rust">Kala</span></a>
+      <nav class="hidden sm:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-ink/70">
+        <a href="#story" class="hover:text-ink transition">Our Story</a>
+        <a href="#shop" class="hover:text-ink transition">Shop</a>
+        <a href="#contact" class="hover:text-ink transition">Contact</a>
+      </nav>
+      <a href="#shop" class="font-mono text-xs uppercase tracking-widest border border-ink rounded-full px-4 py-2 hover:bg-ink hover:text-paper transition">Shop Now</a>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section id="top" class="max-w-7xl mx-auto px-5 sm:px-8 pt-14 sm:pt-24 pb-16 grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
+    <div>
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-rust mb-5">Made by Hand · Made with Heart</p>
+      <h1 class="font-display font-medium text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
+        Every piece on this shelf was made by someone who refused to be counted out.
+      </h1>
+      <p class="mt-6 text-base sm:text-lg text-ink/75 max-w-xl leading-relaxed">
+        HasthKala is a small marketplace for bookmarks, paintings, and handicrafts created entirely by differently-abled artisans.
+        Each product you bring home is a wage earned, a skill honoured, and proof that talent has never needed permission.
+        When you buy here, you're not just decorating a shelf — you're funding someone's independence.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a href="#shop" class="inline-flex items-center gap-2 bg-ink text-paper font-mono text-xs uppercase tracking-widest px-6 py-3.5 rounded-full hover:bg-rust transition focus-ring">
+          Browse the Collection
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="#story" class="font-mono text-xs uppercase tracking-widest text-ink/70 underline underline-offset-4 hover:text-ink transition">Why it matters</a>
+      </div>
+    </div>
+
+    <!-- Decorative panel with hand-stamped seal -->
+    <div class="relative">
+      <div class="aspect-square rounded-2xl border border-line overflow-hidden relative bg-paper">
+        <!--
+          HERO COLLAGE
+          ============
+          A grid of 4 frames automatically filled with photos from
+          the live product catalogue (see setupHeroCollage in the
+          script below) — as products are added to the sheet, this
+          collage updates to reflect them. If fewer than 4 products
+          have images, or a photo fails to load, that frame falls
+          back to its illustrated icon below.
+        -->
+        <div class="grid grid-cols-2 grid-rows-2 gap-1.5 w-full h-full p-1.5">
+
+          <!-- Frame 1: Painting -->
+          <div class="collage-frame relative rounded-xl overflow-hidden bg-gradient-to-br from-rust/20 to-rust/5">
+            <img data-collage-src="" alt="Artisan painting by hand" class="w-full h-full object-cover" onerror="this.style.display='none';" />
+            <div class="absolute inset-0 flex items-center justify-center p-6">
+              <svg viewBox="0 0 64 64" class="w-14 h-14 text-rust/70" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M44 8 L56 20 L24 52 L10 54 L12 40 Z" />
+                <path d="M38 14 L50 26" />
+                <circle cx="14" cy="50" r="2" fill="currentColor" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Frame 2: Weaving / textile -->
+          <div class="collage-frame relative rounded-xl overflow-hidden bg-gradient-to-br from-olive/20 to-olive/5">
+            <img data-collage-src="" alt="Artisan weaving handicraft" class="w-full h-full object-cover" onerror="this.style.display='none';" />
+            <div class="absolute inset-0 flex items-center justify-center p-6">
+              <svg viewBox="0 0 64 64" class="w-14 h-14 text-olive/70" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 16 H56 M8 28 H56 M8 40 H56 M8 52 H56" />
+                <path d="M16 8 V56 M32 8 V56 M48 8 V56" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Frame 3: Bookmark / paper craft -->
+          <div class="collage-frame relative rounded-xl overflow-hidden bg-gradient-to-br from-ochre/20 to-ochre/5">
+            <img data-collage-src="" alt="Artisan crafting bookmarks" class="w-full h-full object-cover" onerror="this.style.display='none';" />
+            <div class="absolute inset-0 flex items-center justify-center p-6">
+              <svg viewBox="0 0 64 64" class="w-14 h-14 text-ochre/70" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 H46 V58 L32 48 L18 58 Z" />
+                <path d="M24 18 H40 M24 26 H40" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Frame 4: Hands shaping clay / handicraft -->
+          <div class="collage-frame relative rounded-xl overflow-hidden bg-gradient-to-br from-rust/15 via-olive/10 to-ochre/15">
+            <img data-collage-src="" alt="Hands shaping a handicraft" class="w-full h-full object-cover" onerror="this.style.display='none';" />
+            <div class="absolute inset-0 flex items-center justify-center p-6">
+              <svg viewBox="0 0 64 64" class="w-14 h-14 text-ink/50" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M32 10 C20 10 14 22 14 32 C14 46 22 54 32 54 C42 54 50 46 50 32 C50 22 44 10 32 10 Z" />
+                <path d="M24 30 C24 26 28 24 32 24 C36 24 40 26 40 30" />
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Stamp -->
+      <div class="seal absolute -bottom-6 -left-6 sm:-left-10 w-28 h-28 sm:w-32 sm:h-32 bg-paper flex items-center justify-center text-center p-3 text-rust shadow-sm z-10">
+        <span class="font-display text-[11px] sm:text-xs uppercase tracking-wide leading-tight">100% Handmade · Heartmade</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= IMPACT STORY ================= -->
+  <section id="story" class="bg-ink text-paper">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-20">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-ochre mb-4">Our Promise</p>
+      <h2 class="font-display text-3xl sm:text-4xl max-w-3xl leading-snug mb-12">
+        A craft economy where ability is measured in skill, patience and imagination — not in what the world assumes you can't do.
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-10 sm:gap-8">
+        <div class="stitch pt-6">
+          <h3 class="font-display text-lg mb-2">Fair Pay, Always</h3>
+          <p class="text-paper/70 text-sm leading-relaxed">Every artisan is paid fairly and directly for the time, care and skill that goes into each piece — no middlemen, no discounts on dignity.</p>
+        </div>
+        <div class="stitch pt-6">
+          <h3 class="font-display text-lg mb-2">Tools &amp; Training</h3>
+          <p class="text-paper/70 text-sm leading-relaxed">A share of every sale goes back into materials, accessible workspaces and skill-building, so creators can grow at their own pace.</p>
+        </div>
+        <div class="stitch pt-6">
+          <h3 class="font-display text-lg mb-2">One Piece, One Story</h3>
+          <p class="text-paper/70 text-sm leading-relaxed">No two items are identical. Small imperfections aren't flaws — they're proof that a real hand, with a real story, made this for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SEARCH & FILTER ================= -->
+  <section id="shop" class="max-w-7xl mx-auto px-5 sm:px-8 pt-14 sm:pt-20">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-8">
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-rust mb-3">The Collection</p>
+        <h2 class="font-display text-3xl sm:text-4xl">Find your piece</h2>
+      </div>
+
+      <!-- Search bar -->
+      <div class="relative w-full sm:w-72">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Search by name…"
+          class="w-full bg-transparent border border-line rounded-full px-5 py-3 text-sm font-body placeholder:text-ink/40 focus-ring focus:border-ink transition"
+          aria-label="Search products by name"
+        />
+        <span class="absolute right-5 top-1/2 -translate-y-1/2 text-ink/40 pointer-events-none" aria-hidden="true">⌕</span>
+      </div>
+    </div>
+
+    <!-- Category filter tabs -->
+    <div id="categoryTabs" class="flex flex-wrap gap-3 mb-12">
+      <!-- Tabs are injected dynamically by JS -->
+    </div>
+  </section>
+
+  <!-- ================= PRODUCT GRID ================= -->
+  <section class="max-w-7xl mx-auto px-5 sm:px-8 pb-24">
+
+    <!-- Loading state -->
+    <div id="loadingState" class="flex flex-col items-center justify-center py-24 gap-4">
+      <div class="spinner" role="status" aria-label="Loading products"></div>
+      <p class="font-mono text-xs uppercase tracking-widest text-ink/50">Fetching handmade treasures…</p>
+    </div>
+
+    <!-- Error state -->
+    <div id="errorState" class="hidden flex-col items-center justify-center py-24 gap-4 text-center">
+      <p class="font-display text-xl">We couldn't load the collection right now.</p>
+      <p class="text-ink/60 text-sm max-w-sm">Please check your connection and try again. If the issue continues, refresh the page in a moment.</p>
+      <button id="retryBtn" class="font-mono text-xs uppercase tracking-widest border border-ink rounded-full px-6 py-3 hover:bg-ink hover:text-paper transition focus-ring">Try Again</button>
+    </div>
+
+    <!-- Empty state -->
+    <div id="emptyState" class="hidden flex-col items-center justify-center py-24 gap-2 text-center">
+      <p class="font-display text-xl">No pieces match your search.</p>
+      <p class="text-ink/60 text-sm">Try a different keyword or category.</p>
+    </div>
+
+    <!-- Product grid -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8"></div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer id="contact" class="bg-ink text-paper">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 grid sm:grid-cols-3 gap-10">
+      <div>
+        <p class="font-display text-2xl mb-3">Hasth<span class="text-ochre">Kala</span></p>
+        <p class="text-paper/60 text-sm leading-relaxed max-w-xs">Handmade bookmarks, paintings and handicrafts crafted by differently-abled artisans. Every order is a vote for inclusive craftsmanship.</p>
+      </div>
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-ochre mb-3">Get in Touch</p>
+        <p class="text-paper/70 text-sm">Order directly via WhatsApp on any product card, or write to us — we're happy to help with custom requests.</p>
+      </div>
+      <div>
+        <p class="font-mono text-xs uppercase tracking-widest text-ochre mb-3">A Note on Craft</p>
+        <p class="text-paper/70 text-sm leading-relaxed">Colours, textures and sizes may vary slightly from piece to piece — that's the nature of something made by hand, not a machine.</p>
+      </div>
+    </div>
+    <div class="border-t border-paper/10 py-6 text-center text-paper/40 text-xs font-mono">
+      © <span id="year"></span> HasthKala. Crafted with care, for creators who deserve more.
+    </div>
+  </footer>
+
+  <!-- ================= ORDER MODAL ================= -->
+  <div id="orderModal" class="hidden fixed inset-0 z-50 items-center justify-center p-4">
+    <!-- Backdrop -->
+    <div id="orderModalBackdrop" class="absolute inset-0 bg-ink/50 backdrop-blur-sm"></div>
+
+    <!-- Modal card -->
+    <div class="relative bg-paper border border-line rounded-2xl w-full max-w-md max-h-[90vh] overflow-y-auto shadow-xl">
+      <div class="p-6 sm:p-8">
+        <div class="flex items-start justify-between mb-5">
+          <div>
+            <p class="font-mono text-xs uppercase tracking-[0.25em] text-rust mb-1">Confirm Your Order</p>
+            <h3 id="modalProductName" class="font-display text-2xl leading-snug"></h3>
+          </div>
+          <button id="modalCloseBtn" aria-label="Close" class="text-ink/50 hover:text-ink text-2xl leading-none transition focus-ring">&times;</button>
+        </div>
+
+        <!-- Product summary -->
+        <div class="flex items-center gap-4 mb-6 p-3 bg-white/50 border border-line rounded-xl">
+          <img id="modalProductImage" src="" alt="" class="w-16 h-16 object-cover rounded-lg border border-line shrink-0" onerror="this.src='https://placehold.co/200x200/F6F1E6/A1462E?text=HasthKala';" />
+          <div class="min-w-0">
+            <p id="modalProductCategory" class="font-mono text-[10px] uppercase tracking-widest text-ink/50 mb-1"></p>
+            <p id="modalProductPrice" class="font-display text-lg"></p>
+          </div>
+        </div>
+
+        <p class="text-sm text-ink/60 mb-5 leading-relaxed">
+          Fill in your details below. When you tap <span class="font-medium text-ink">Confirm Order</span>, WhatsApp will open with this information — along with a link to this exact product image — ready to send.
+        </p>
+
+        <!-- Buyer details form -->
+        <form id="orderForm" class="flex flex-col gap-4">
+          <div>
+            <label for="buyerName" class="block font-mono text-[10px] uppercase tracking-widest text-ink/50 mb-1.5">Your Name</label>
+            <input
+              type="text"
+              id="buyerName"
+              placeholder="e.g. Priya Sharma"
+              required
+              class="w-full bg-transparent border border-line rounded-lg px-4 py-2.5 text-sm placeholder:text-ink/30 focus-ring focus:border-ink transition"
+            />
+          </div>
+          <div>
+            <label for="buyerPhone" class="block font-mono text-[10px] uppercase tracking-widest text-ink/50 mb-1.5">Phone Number</label>
+            <input
+              type="tel"
+              id="buyerPhone"
+              placeholder="e.g. 9876543210"
+              required
+              class="w-full bg-transparent border border-line rounded-lg px-4 py-2.5 text-sm placeholder:text-ink/30 focus-ring focus:border-ink transition"
+            />
+          </div>
+          <div>
+            <label for="buyerAddress" class="block font-mono text-[10px] uppercase tracking-widest text-ink/50 mb-1.5">Delivery Address</label>
+            <textarea
+              id="buyerAddress"
+              rows="3"
+              placeholder="House no., street, city, state, pincode"
+              required
+              class="w-full bg-transparent border border-line rounded-lg px-4 py-2.5 text-sm placeholder:text-ink/30 focus-ring focus:border-ink transition resize-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="mt-2 w-full bg-olive text-paper font-mono text-xs uppercase tracking-widest rounded-full px-6 py-3.5 hover:bg-ink transition focus-ring"
+          >
+            Confirm Order &amp; Open WhatsApp
+          </button>
+          <button
+            type="button"
+            id="modalCopyBtn"
+            class="font-mono text-[10px] uppercase tracking-widest text-ink/40 hover:text-ink underline underline-offset-4 transition focus-ring text-center"
+          >
+            Or copy order details instead
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    /* =========================================================
+       CONFIGURATION
+    ========================================================= */
+    const API_URL = "https://api.sheetninja.io/412f3071ef194a45b3a5154757884e1b/hasthKala/sheet1";
+    const WHATSAPP_NUMBER = "919714064322"; // 91 + 9714064322 (no '+' or spaces for wa.me)
+
+    // Note: The hero collage automatically pulls images from the live
+    // product catalogue (see setupHeroCollage) — no manual config needed.
+
+    /* =========================================================
+       STATE
+    ========================================================= */
+    let allProducts = [];
+    let activeCategory = "All";
+    let searchTerm = "";
+
+    /* =========================================================
+       DOM REFERENCES
+    ========================================================= */
+    const productGrid   = document.getElementById("productGrid");
+    const loadingState  = document.getElementById("loadingState");
+    const errorState    = document.getElementById("errorState");
+    const emptyState    = document.getElementById("emptyState");
+    const categoryTabs  = document.getElementById("categoryTabs");
+    const searchInput   = document.getElementById("searchInput");
+    const retryBtn      = document.getElementById("retryBtn");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* =========================================================
+       GOOGLE DRIVE IMAGE HACK
+       Converts any standard Google Drive share link into a
+       direct-rendering URL using Google's image-serving host,
+       which is more reliable for <img> tags than uc?export=view:
+         https://lh3.googleusercontent.com/d/FILE_ID
+    ========================================================= */
+    function resolveImageUrl(rawUrl) {
+      if (!rawUrl || typeof rawUrl !== "string") return "";
+      const url = rawUrl.trim();
+
+      if (!url.includes("drive.google.com")) return url;
+
+      // Matches patterns like:
+      //  - https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+      //  - https://drive.google.com/file/d/FILE_ID/view?usp=drivesdk
+      //  - https://drive.google.com/open?id=FILE_ID
+      //  - https://drive.google.com/uc?id=FILE_ID&export=download
+      let fileId = "";
+
+      const pathMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+      const queryMatch = url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+
+      if (pathMatch && pathMatch[1]) {
+        fileId = pathMatch[1];
+      } else if (queryMatch && queryMatch[1]) {
+        fileId = queryMatch[1];
+      }
+
+      if (!fileId) return url; // fallback: return as-is if pattern not recognised
+
+      return `https://lh3.googleusercontent.com/d/${fileId}`;
+    }
+
+    /* =========================================================
+       ROBUST API RESPONSE PARSING
+       SheetNinja-style APIs can return data in slightly different
+       shapes depending on configuration. This function normalises
+       any of those shapes into a flat array of row objects.
+    ========================================================= */
+    function extractRows(json) {
+      if (Array.isArray(json)) return json;
+
+      if (json && typeof json === "object") {
+        // Common shapes: { data: [...] }, { rows: [...] }, { sheet1: [...] }
+        for (const key of ["data", "rows", "result", "sheet1", "records"]) {
+          if (Array.isArray(json[key])) return json[key];
+        }
+        // Fallback: find the first array value in the object
+        for (const value of Object.values(json)) {
+          if (Array.isArray(value)) return value;
+        }
+      }
+
+      return [];
+    }
+
+    /* =========================================================
+       FIELD NORMALISATION
+       Sheet column headers may vary in casing/spacing
+       (e.g. "Product Name", "name", "Image URL").
+       This builds a lowercase, trimmed key map for safe access.
+    ========================================================= */
+    function getField(row, possibleKeys) {
+      const lowerRow = {};
+      Object.keys(row).forEach((k) => {
+        lowerRow[k.trim().toLowerCase()] = row[k];
+      });
+
+      for (const key of possibleKeys) {
+        if (lowerRow[key] !== undefined && lowerRow[key] !== null && lowerRow[key] !== "") {
+          return lowerRow[key];
+        }
+      }
+      return "";
+    }
+
+    function normaliseProduct(row) {
+      const name     = getField(row, ["name", "product name", "productname", "product", "title"]);
+      const category = getField(row, ["category", "type"]) || "Uncategorised";
+      const priceRaw = getField(row, ["price", "amount", "cost"]);
+      const image    = getField(row, ["image", "image url", "imageurl", "img", "photo", "picture"]);
+      const status   = getField(row, ["status", "stock", "stock status", "availability"]) || "In Stock";
+
+      // Clean numeric price (strip currency symbols/commas) but keep display-friendly
+      const priceNumber = parseFloat(String(priceRaw).replace(/[^0-9.]/g, ""));
+      const price = isNaN(priceNumber) ? String(priceRaw).trim() : priceNumber;
+
+      const isOutOfStock = String(status).trim().toLowerCase().includes("out");
+
+      return {
+        name: String(name).trim() || "Untitled Piece",
+        category: String(category).trim(),
+        price,
+        image: resolveImageUrl(image),
+        isOutOfStock
+      };
+    }
+
+    /* =========================================================
+       WHATSAPP MESSAGE BUILDER
+       Mobile devices use the app deep-link (whatsapp://) which
+       bypasses api.whatsapp.com entirely. Desktop falls back to
+       web.whatsapp.com, which is on a different domain than
+       api.whatsapp.com and is less commonly blocked.
+    ========================================================= */
+    function isMobileDevice() {
+      return /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    function buildOrderMessage(product, buyer) {
+      const priceDisplay = typeof product.price === "number"
+        ? product.price.toLocaleString("en-IN")
+        : product.price;
+
+      buyer = buyer || {};
+      const name    = buyer.name    ? buyer.name.trim()    : "";
+      const phone   = buyer.phone   ? buyer.phone.trim()   : "";
+      const address = buyer.address ? buyer.address.trim() : "";
+
+      let message =
+`Hi, I want to order the following item from your store:
+Product: ${product.name}
+Category: ${product.category}
+Price: ₹${priceDisplay}`;
+
+      if (product.image) {
+        message += `\nProduct Image: ${product.image}`;
+      }
+
+      message +=
+`
+
+My Details:
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+Please share the payment details.`;
+
+      return message;
+    }
+
+    function buildWhatsAppLink(product, buyer) {
+      const encodedMessage = encodeURIComponent(buildOrderMessage(product, buyer));
+
+      if (isMobileDevice()) {
+        return `whatsapp://send?phone=${WHATSAPP_NUMBER}&text=${encodedMessage}`;
+      }
+
+      return `https://web.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodedMessage}`;
+    }
+
+    /* =========================================================
+       CLIPBOARD FALLBACK
+       If WhatsApp itself is blocked on the visitor's network,
+       copy the order message so they can paste it manually into
+       WhatsApp, SMS, or email.
+    ========================================================= */
+    function copyOrderMessage(product, buyer) {
+      const text = buildOrderMessage(product, buyer);
+
+      const fallbackCopy = () => {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(textarea);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+
+      showToast(`Message copied! Paste it in WhatsApp to +${WHATSAPP_NUMBER}`);
+    }
+
+    /* =========================================================
+       ORDER MODAL
+       Collects buyer name, phone and address before opening
+       WhatsApp, so the order message arrives fully filled in.
+    ========================================================= */
+    let currentOrderProduct = null;
+
+    const orderModal         = document.getElementById("orderModal");
+    const orderModalBackdrop = document.getElementById("orderModalBackdrop");
+    const modalCloseBtn      = document.getElementById("modalCloseBtn");
+    const orderForm          = document.getElementById("orderForm");
+    const modalCopyBtn       = document.getElementById("modalCopyBtn");
+
+    const modalProductName     = document.getElementById("modalProductName");
+    const modalProductImage    = document.getElementById("modalProductImage");
+    const modalProductCategory = document.getElementById("modalProductCategory");
+    const modalProductPrice    = document.getElementById("modalProductPrice");
+
+    const buyerNameInput    = document.getElementById("buyerName");
+    const buyerPhoneInput   = document.getElementById("buyerPhone");
+    const buyerAddressInput = document.getElementById("buyerAddress");
+
+    function openOrderModal(product) {
+      currentOrderProduct = product;
+
+      const priceDisplay = typeof product.price === "number"
+        ? product.price.toLocaleString("en-IN")
+        : product.price;
+
+      modalProductName.textContent     = product.name;
+      modalProductImage.src            = product.image || "";
+      modalProductImage.alt            = product.name;
+      modalProductCategory.textContent = product.category;
+      modalProductPrice.textContent    = `₹${priceDisplay}`;
+
+      // Reset form
+      orderForm.reset();
+
+      orderModal.classList.remove("hidden");
+      orderModal.classList.add("flex");
+      document.body.style.overflow = "hidden";
+
+      // Focus first field for quick filling
+      setTimeout(() => buyerNameInput.focus(), 100);
+    }
+
+    function closeOrderModal() {
+      orderModal.classList.add("hidden");
+      orderModal.classList.remove("flex");
+      document.body.style.overflow = "";
+      currentOrderProduct = null;
+    }
+
+    function getBuyerDetails() {
+      return {
+        name: buyerNameInput.value,
+        phone: buyerPhoneInput.value,
+        address: buyerAddressInput.value
+      };
+    }
+
+    modalCloseBtn.addEventListener("click", closeOrderModal);
+    orderModalBackdrop.addEventListener("click", closeOrderModal);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !orderModal.classList.contains("hidden")) {
+        closeOrderModal();
+      }
+    });
+
+    orderForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!currentOrderProduct) return;
+
+      const buyer = getBuyerDetails();
+      window.open(buildWhatsAppLink(currentOrderProduct, buyer), "_blank", "noopener");
+      closeOrderModal();
+    });
+
+    modalCopyBtn.addEventListener("click", () => {
+      if (!currentOrderProduct) return;
+      const buyer = getBuyerDetails();
+      copyOrderMessage(currentOrderProduct, buyer);
+      closeOrderModal();
+    });
+
+
+    function showToast(message) {
+      let toast = document.getElementById("toast");
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast";
+        toast.className =
+          "fixed bottom-6 left-1/2 -translate-x-1/2 bg-ink text-paper font-mono text-xs uppercase tracking-widest px-6 py-3 rounded-full shadow-lg z-50 transition-opacity duration-300";
+        document.body.appendChild(toast);
+      }
+      toast.textContent = message;
+      toast.style.opacity = "1";
+
+      clearTimeout(toast._hideTimer);
+      toast._hideTimer = setTimeout(() => {
+        toast.style.opacity = "0";
+      }, 3500);
+    }
+
+    /* =========================================================
+       RENDERING — CATEGORY TABS
+    ========================================================= */
+    function renderCategoryTabs() {
+      const categories = ["All", ...new Set(allProducts.map((p) => p.category).filter(Boolean))];
+
+      categoryTabs.innerHTML = "";
+      categories.forEach((cat) => {
+        const btn = document.createElement("button");
+        btn.textContent = cat;
+        btn.dataset.category = cat;
+        btn.className =
+          "font-mono text-xs uppercase tracking-widest border border-line rounded-full px-5 py-2 transition hover:border-ink focus-ring" +
+          (cat === activeCategory ? " pill-active" : "");
+        btn.addEventListener("click", () => {
+          activeCategory = cat;
+          renderCategoryTabs();
+          applyFilters();
+        });
+        categoryTabs.appendChild(btn);
+      });
+    }
+
+    /* =========================================================
+       RENDERING — PRODUCT GRID
+    ========================================================= */
+    function renderProducts(products) {
+      productGrid.innerHTML = "";
+
+      if (products.length === 0) {
+        emptyState.classList.remove("hidden");
+        emptyState.classList.add("flex");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+      emptyState.classList.remove("flex");
+
+      products.forEach((product, index) => {
+        const card = document.createElement("article");
+        card.className =
+          "fade-in group relative bg-white/40 border border-line rounded-2xl overflow-hidden flex flex-col" +
+          (product.isOutOfStock ? " opacity-60" : "");
+        card.style.animationDelay = `${Math.min(index * 0.04, 0.4)}s`;
+
+        const priceDisplay = typeof product.price === "number"
+          ? product.price.toLocaleString("en-IN")
+          : product.price;
+
+        card.innerHTML = `
+          <div class="relative aspect-[4/5] bg-line/40 overflow-hidden">
+            <img
+              src="${product.image || ''}"
+              alt="${escapeHtml(product.name)}"
+              loading="lazy"
+              class="w-full h-full object-cover transition duration-500 ${product.isOutOfStock ? '' : 'group-hover:scale-105'}"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x750/F6F1E6/A1462E?text=HasthKala';"
+            />
+            <span class="absolute top-3 left-3 bg-paper/90 backdrop-blur-sm font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full border border-line">
+              ${escapeHtml(product.category)}
+            </span>
+            ${product.isOutOfStock ? `
+              <span class="absolute top-3 right-3 bg-rust text-paper font-mono text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-full">
+                Out of Stock
+              </span>` : ``}
+          </div>
+          <div class="p-5 flex flex-col gap-3 flex-1">
+            <h3 class="font-display text-lg leading-snug">${escapeHtml(product.name)}</h3>
+            <p class="font-mono text-base text-ink/80 mt-auto">₹${escapeHtml(String(priceDisplay))}</p>
+            <button
+              class="whatsapp-btn font-mono text-xs uppercase tracking-widest rounded-full px-5 py-3 transition focus-ring ${
+                product.isOutOfStock
+                  ? "bg-line text-ink/40 cursor-not-allowed"
+                  : "bg-olive text-paper hover:bg-ink"
+              }"
+              ${product.isOutOfStock ? "disabled aria-disabled='true'" : ""}
+            >
+              ${product.isOutOfStock ? "Out of Stock" : "Buy via WhatsApp"}
+            </button>
+            ${!product.isOutOfStock ? `
+              <button class="copy-btn font-mono text-[10px] uppercase tracking-widest text-ink/40 hover:text-ink underline underline-offset-4 transition focus-ring text-left">
+                Or copy order details
+              </button>` : ``}
+          </div>
+        `;
+
+        const btn = card.querySelector(".whatsapp-btn");
+        if (!product.isOutOfStock) {
+          btn.addEventListener("click", () => {
+            openOrderModal(product);
+          });
+
+          const copyBtn = card.querySelector(".copy-btn");
+          copyBtn.addEventListener("click", () => {
+            copyOrderMessage(product);
+          });
+        }
+
+        productGrid.appendChild(card);
+      });
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    /* =========================================================
+       FILTERING — SEARCH + CATEGORY
+    ========================================================= */
+    function applyFilters() {
+      let filtered = allProducts;
+
+      if (activeCategory !== "All") {
+        filtered = filtered.filter((p) => p.category === activeCategory);
+      }
+
+      if (searchTerm.trim() !== "") {
+        const term = searchTerm.trim().toLowerCase();
+        filtered = filtered.filter((p) => p.name.toLowerCase().includes(term));
+      }
+
+      renderProducts(filtered);
+    }
+
+    searchInput.addEventListener("input", (e) => {
+      searchTerm = e.target.value;
+      applyFilters();
+    });
+
+    /* =========================================================
+       DATA FETCHING
+    ========================================================= */
+    async function fetchProducts() {
+      loadingState.classList.remove("hidden");
+      loadingState.classList.add("flex");
+      errorState.classList.add("hidden");
+      errorState.classList.remove("flex");
+      emptyState.classList.add("hidden");
+      productGrid.innerHTML = "";
+
+      try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        const json = await response.json();
+        const rows = extractRows(json);
+
+        allProducts = rows.map(normaliseProduct).filter((p) => p.name);
+
+        loadingState.classList.add("hidden");
+        loadingState.classList.remove("flex");
+
+        renderCategoryTabs();
+        applyFilters();
+        setupHeroCollage();
+      } catch (err) {
+        console.error("Failed to fetch products:", err);
+        loadingState.classList.add("hidden");
+        loadingState.classList.remove("flex");
+        errorState.classList.remove("hidden");
+        errorState.classList.add("flex");
+      }
+    }
+
+    retryBtn.addEventListener("click", fetchProducts);
+
+    /* =========================================================
+       HERO COLLAGE SETUP
+       Populates each of the 4 collage frames with photos taken
+       directly from the fetched product catalogue, so the hero
+       always reflects the live collection. Products with images
+       are picked first (in order); frames with no available
+       product image keep showing their illustrated icon.
+    ========================================================= */
+    function setupHeroCollage() {
+      const frames = document.querySelectorAll(".collage-frame img[data-collage-src]");
+
+      const productsWithImages = allProducts.filter((p) => p.image);
+
+      frames.forEach((img, index) => {
+        const product = productsWithImages[index];
+
+        if (!product) return; // keep illustration
+
+        img.src = product.image;
+        img.alt = product.name;
+
+        img.addEventListener("load", () => {
+          const illustration = img.parentElement.querySelector("div");
+          if (illustration) illustration.style.display = "none";
+        });
+
+        img.addEventListener("error", () => {
+          // If a product image fails to load, fall back to the illustration
+          const illustration = img.parentElement.querySelector("div");
+          if (illustration) illustration.style.display = "flex";
+        });
+      });
+    }
+
+    /* =========================================================
+       INIT
+    ========================================================= */
+    fetchProducts();
+  </script>
+
+</body>
+</html>
